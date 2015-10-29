@@ -69,3 +69,29 @@ that the generated `composer.json` might differ from this project's file.
 ### Should I commit the contrib modules I download
 
 Composer recommends **no**. They provide [argumentation against but also workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
+
+### How do I use this on Acquia cloud?
+
+Add this to your `settings.php` before deploying to Acquia Cloud. Replace `AH_SITE_GROUP` with the name of your site
+group in Acquia Cloud.
+
+```php
+<?php
+
+// On Acquia Cloud, this include file configures Drupal to use the correct
+// database in each site environment (Dev, Stage, or Prod). To use this
+// settings.php for development on your local workstation, set $db_url
+// (Drupal 5 or 6) or $databases (Drupal 7 or 8) as described in comments above.
+if (file_exists('/var/www/site-php')) {
+
+  // As of 29 October 2015, Acquia Cloud does not support release candidates of Drupal 8,
+  // so we must define `conf_path` function which was removed between beta15 and RC1.
+  if (!function_exists('conf_path')) {
+    function conf_path() {
+      $request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
+      return \Drupal\Core\DrupalKernel::findSitePath($request, FALSE);
+    }
+  }
+  require('/var/www/site-php/AH_SITE_GROUP/AH_SITE_GROUP-settings.inc');
+}
+```
