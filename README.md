@@ -159,7 +159,7 @@ can only run on the Acquia Cloud environment.
 
 You never need this module, and it probably will not work correctly as there is no longer
 a composer.json file within the document root. It is incorrect for contrib modules to
-declare this depednency explicitly, because it is never the only way to run a module
+declare this dependency explicitly, because it is never the only way to run a module
 that has composer PHP dependencies.
 
 In a module or your project profile, add this hook implementation:
