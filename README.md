@@ -143,3 +143,14 @@ if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/AH_SITE_GROUP/AH_SITE_GROUP-settings.inc');
 }
 ```
+
+The Acquia Connector should be added to the root level `composer.json` unless your site profile
+can only run on the Acquia Cloud environment.
+
+```json
+{
+    "require": {
+        "drupal/acquia_connector": "8.1.*@dev"
+    }
+}
+```
