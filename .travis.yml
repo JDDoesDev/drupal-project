@@ -19,19 +19,19 @@ install:
 script:
   # Test stable release
   - cd $TRAVIS_BUILD_DIR/docroot
-  - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
+  - ./../bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because docroot/ has no composer.json
-  - ./../vendor/bin/phpunit -c core --exclude-group Composer
-  - ./../vendor/bin/drush
-  - ./../vendor/bin/console
+  - ./../bin/phpunit -c core --exclude-group Composer
+  - ./../bin/drush
+  - ./../bin/console
 
   # Test dev release
   - cd $TRAVIS_BUILD_DIR
   - composer --verbose require --no-update drupal/core:8.0.x-dev
   - composer --verbose update
   - cd $TRAVIS_BUILD_DIR/docroot
-  - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
+  - ./../bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because docroot/ has no composer.json
-  - ./../vendor/bin/phpunit -c core --exclude-group Composer
-  - ./../vendor/bin/drush
-  - ./../vendor/bin/console
+  - ./../bin/phpunit -c core --exclude-group Composer
+  - ./../bin/drush
+  - ./../bin/console
