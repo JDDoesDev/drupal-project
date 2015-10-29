@@ -33,6 +33,9 @@
     "scripts": {
         "post-install-cmd": "scripts/composer/post-install.sh"
     },
+    "config": {
+        "bin-dir": "bin"
+    },
     "extra": {
         "installer-paths": {
             "web/core": ["type:drupal-core"],
