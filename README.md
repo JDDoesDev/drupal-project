@@ -97,7 +97,7 @@ Add this to your root level `composer.json`:
     "require": {
         "wikimedia/composer-merge-plugin": "^1.3.0"
     },
-    "extras": {
+    "extra": {
         "merge-plugin": {
             "include": [
                 "docroot/profiles/specialproject/composer.json"
