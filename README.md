@@ -63,6 +63,54 @@ With using [the "Composer Generate" drush extension](https://www.drupal.org/proj
 you can now generate a basic `composer.json` file from an existing project. Note
 that the generated `composer.json` might differ from this project's file.
 
+## Creating a site profile
+
+We advise that all projects be created as a [Drupal 8 profile](https://www.drupal.org/node/2210443) and that
+Composer be used to manage Drupal dependencies within the profile.
+
+```bash
+mkdir docroot/profiles/specialproject
+```
+
+Create a `composer.json` file in the profile's directory, for example:
+
+```json
+{
+    "name": "my-company/special-project-profile",
+    "type": "drupal-profile",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org"
+        }
+    ],
+    "require": {
+        "drupal/metatag": "~8.0@dev"
+    }
+}
+```
+
+Add this to your root level `composer.json`:
+
+```json
+{
+    "require": {
+        "wikimedia/composer-merge-plugin": "^1.3.0"
+    },
+    "extras": {
+        "merge-plugin": {
+            "include": [
+                "docroot/profiles/specialproject/composer.json"
+            ]
+        }
+    }
+}
+```
+
+This will allow you to maintain a `composer.json` file for your profile separate
+from the Drupal composer platform's dependencies while keeping the simplicity of
+running `composer update` from the root level to update dependencies for the
+Drupal platform and the profile at the same time.
 
 ## FAQ
 
