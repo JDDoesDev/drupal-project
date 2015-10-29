@@ -33,12 +33,12 @@ composer require drupal/devel:8.*
 
 When installing the given `composer.json` some tasks are taken care of:
 
-* Drupal will be installed in the `web`-directory.
+* Drupal will be installed in the `docroot`-directory.
 * Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
-  instead of the one provided by Drupal (`web/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
+  instead of the one provided by Drupal (`docroot/vendor/autoload.php`).
+* Modules (packages of type `drupal-module`) will be placed in `docroot/modules/contrib/`
+* Theme (packages of type `drupal-theme`) will be placed in `docroot/themes/contrib/`
+* Profiles (packages of type `drupal-profile`) will be placed in `docroot/profiles/contrib/`
 * Creates default writable versions of `settings.php` and `services.yml`.
 * Creates `sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
@@ -50,11 +50,11 @@ Updating Drupal core is a two-step process.
 
 1. Update the version number of `drupal/core` in `composer.json`.
 1. Run `composer update drupal/core`.
-1. Run `./scripts/drupal/update-scaffold` to update files in the `web` directory.
-   This will update `web` with whatever the latest Drupal 8 release is. Review
+1. Run `./scripts/drupal/update-scaffold` to update files in the `docroot` directory.
+   This will update `docroot` with whatever the latest Drupal 8 release is. Review
    the files for any changes and restore any customizations to `.htaccess` or
    `robots.txt`.
-1. Commit everything all together in a single commit, so `web` will remain in
+1. Commit everything all together in a single commit, so `docroot` will remain in
    sync with the `core` when checking out branches or running `git bisect`.
 
 ## Generate composer.json from existing project
