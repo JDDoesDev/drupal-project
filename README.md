@@ -154,3 +154,26 @@ can only run on the Acquia Cloud environment.
     }
 }
 ```
+
+### Do I need [Composer Manager](https://www.drupal.org/project/composer_manager)?
+
+You never need this module, and it probably will not work correctly as there is no longer
+a composer.json file within the document root. It is incorrect for contrib modules to
+declare this depednency explicitly, because it is never the only way to run a module
+that has composer PHP dependencies.
+
+In a module or your project profile, add this hook implementation:
+
+```php
+<?php
+
+/**
+ * Implements hook_system_info_alter().
+ */
+function MODULE_system_info_alter(array &$info, \Drupal\Core\Extension\Extension $file, $type) {
+  // remove composer_manager dependency.
+  if (isset($info['dependencies']) && !empty($info['dependencies'])) {
+    $info['dependencies'] = array_diff($info['dependencies'], array('composer_manager'));
+  }
+}
+```
