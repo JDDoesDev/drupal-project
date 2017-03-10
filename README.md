@@ -98,11 +98,11 @@ Create a `composer.json` file in the profile's directory, for example:
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
+            "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
-        "drupal/metatag": "~8.0@dev"
+        "drupal/metatag": "~1.0@dev"
     }
 }
 ```
