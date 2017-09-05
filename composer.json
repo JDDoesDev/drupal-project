@@ -26,7 +26,8 @@
         "drupal/stage_file_proxy": "^1.0@alpha",
         "drupal/devel": "^1.0",
         "drupal/kint": "^1.0",
-        "drupal/bootstrap": "^3.5"
+        "drupal/bootstrap": "^3.5",
+        "caxy/caxy_bootstrap_starter": "^1.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
