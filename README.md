@@ -1,4 +1,4 @@
-# Composer template for Drupal projects
+# Composer template for Drupal projects using Bootstrap
 
 [![Build Status](https://travis-ci.org/caxy/drupal-project.svg?branch=8.x)](https://travis-ci.org/caxy/drupal-project)
 
@@ -8,6 +8,10 @@ dependencies with [Composer](https://getcomposer.org/).
 If you want to know how to use it as replacement for
 [Drush Make](https://github.com/drush-ops/drush/blob/master/docs/make.md) visit
 the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+
+## Requirements
+
+For SASS to work, it is highly recommended you have [Node.js](nodejs.org) installed on your machine.  This distribution relies on `npm install` and `gulp` to compile the SASS 
 
 ## Usage
 
@@ -20,7 +24,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project caxy/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+composer create-project caxy/drupal-project:8.x-bootstrap-dev <some-dir> --stability dev --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your 
@@ -34,6 +38,25 @@ composer require drupal/devel:~1.0
 The `composer create-project` command passes ownership of all files to the 
 project that is created. You should create a new git repository, and commit 
 all files not excluded by the .gitignore file.
+
+## After install, what next?
+
+Once the Bootstrap Project has been installed, there should be a _Caxy Bootstrap_ profile available in the installation screens.  Select this profile and all common modules will be installed.
+
+After the site is installed using this profile, it may look a little Stark (pun intended).  This is because no theme is set as default.  We could use the Bootstrap Base Theme, but that wouldn't be very useful going forward.  Instead, let's use our subtheme.
+
+1. Copy `docroot/profiles/contrib/caxy_bootstrap_starter/themes/caxy_bootstrap` to `docroot/themes/custom/caxy_bootstrap` 
+1. Rename `docroot/themes/custom/caxy_bootstrap/.caxy_bootstrap.starterkit.yml` to `docroot/themes/custom/caxy_bootstrap/caxy_bootstrap.info.yml`.  This file is named with the starting period and `starterkit` to be doubly sure that we're not enabling the profile version of the theme.
+1. Go to `/docroot/themes/custom/caxy_bootstrap` and run `npm install`.  This will install gulp, sass, and other Node modules that will help with the front-end development.
+1. After the node modules have installed into the `vendor` folder, run `gulp sass` to compile the sass into usable CSS.
+1. Run `drush cr` and reload your Drupal site.
+1. Go to admin/appearance in your Drupal site and Install and Set as Default on the Caxy Bootstrap Sub-Theme
+
+If you've completed the steps above, you should have a usable site ready to style with Bootstrap and SASS.
+
+The gulpfile also includes a JS linter, image compression, and CSS minification by default.  It also includes LiveReload for rapid theming.  This, coupled with the [Chrome LiveReload Extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) makes theming much quicker.
+
+To enable Live Reloading and watching for changes, run `gulp watch` from your theme directory and enjoy.
 
 ## What does the template do?
 
