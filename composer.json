@@ -27,7 +27,7 @@
         "drupal/devel": "^1.0",
         "drupal/kint": "^1.0",
         "drupal/bootstrap": "^3.5",
-        "caxy/caxy_bootstrap_starter": "dev-master"
+        "caxy/caxy_headless_starter": "dev-master"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -77,6 +77,18 @@
             "drush/contrib/{$name}": ["type:drupal-drush"],
             "docroot/modules/custom/{$name}": ["type:drupal-custom-module"],
             "docroot/themes/custom/{$name}": ["type:drupal-custom-theme"]
+        },
+        "merge-plugin": {
+            "include": [
+              "docroot/composer.json"
+            ],
+            "recurse": true,
+            "replace": false,
+            "ignore-duplicates": false,
+            "merge-dev": true,
+            "merge-extra": false,
+            "merge-extra-deep": false,
+            "merge-scripts": false
         }
     }
 }
