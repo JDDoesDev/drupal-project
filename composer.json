@@ -19,7 +19,7 @@
         "composer/installers": "^1.2",
         "drupal-composer/drupal-scaffold": "^2.2",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "^8.4",
+        "drupal/core": "~8.4",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
         "wikimedia/composer-merge-plugin": "~1.4",
@@ -27,7 +27,7 @@
         "drupal/devel": "^1.0",
         "drupal/kint": "^1.0",
         "drupal/bootstrap": "^3.5",
-        "caxy/caxy_headless_starter": "dev-master"
+        "caxy/ichabod_caxy": "dev-master"
     },
     "require-dev": {
         "behat/mink": "~1.7",
