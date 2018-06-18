@@ -24,7 +24,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project caxy/drupal-project:8.x-bootstrap-dev <some-dir> --stability dev --no-interaction
+composer create-project jddoesdev/drupal-project:drupal-headless <some-dir> --stability dev --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your 
