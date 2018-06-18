@@ -1,12 +1,12 @@
 {
-    "name": "caxy/drupal-project",
+    "name": "jddoesdev/drupal-project",
     "description": "Project template for Drupal 8 projects with composer",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
         {
-            "name": "",
-            "role": ""
+            "name": "JD Flynn",
+            "role": "Forked and updates"
         }
     ],
     "repositories": [
